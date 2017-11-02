@@ -1,0 +1,13 @@
+<div class="container">
+    <h1 class="text-center">
+        Admin Dashboard
+    </h1>
+    {{#each users}}
+    <div class="card card-body mb-2 text-center">
+        <h4> Name: {{name}}</h4>
+        <p> Email: {{email}}</p>
+    </div>
+    {{else}}
+    <h1 class="text-center"> Sad there are no users</h1>
+    {{/each}}
+</div>
