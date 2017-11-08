@@ -41,6 +41,9 @@ router.post("/", ensureAuthenticated, (req, res) => {
     if (!req.body.title) {
         errors.push({ text: "Please add a title" });
     }
+    if (!req.body.details) {
+        errors.push({ text: "Please add some details" });
+    }
 
     if (errors.length > 0) {
         res.render("/add", {
@@ -49,12 +52,12 @@ router.post("/", ensureAuthenticated, (req, res) => {
             details: req.body.details
         });
     } else {
-        const newUser = {
+        const newIdea = {
             title: req.body.title,
             details: req.body.details,
             user: req.user.id
         };
-        new Idea(newUser)
+        new Idea(newIdea)
             .save()
             .then(() => {
                 req.flash("success_msg", "Todolist Item added");

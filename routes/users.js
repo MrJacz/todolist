@@ -31,13 +31,9 @@ router.post("/login", (req, res, next) => {
 router.post("/register", (req, res) => {
     const errors = [];
 
-    if (req.body.password !== req.body.password2) {
-        errors.push({ text: "Passwords do not match" });
-    }
+    if (req.body.password !== req.body.password2) errors.push({ text: "Passwords do not match" });
 
-    if (req.body.password.length < 6) {
-        errors.push({ text: "Password must be at least 6 characters" });
-    }
+    if (req.body.password.length < 8) errors.push({ text: "Password must be at least 6 characters" });
 
     if (errors.length > 0) {
         res.render("users/register", {
@@ -57,21 +53,18 @@ router.post("/register", (req, res) => {
                     const newUser = new User({
                         name: req.body.name,
                         email: req.body.email,
-                        password: req.body.password,
-                        token: randomString()
+                        password: req.body.password
                     });
 
                     bcrypt.genSalt(10, (err, salt) => {
                         if (err) throw err;
-                        bcrypt.hash(newUser.password, salt, (err, hash) => {
+                        bcrypt.hash(newUser.password, salt, (err, hash) => { // eslint-disable-line
                             if (err) throw err;
                             newUser.password = hash;
-                            newUser.save().then(() => {
+                            newUser.save().then(() => { // eslint-disable-line
                                 req.flash("success_msg", "You are now registered and can log in");
                                 res.redirect("/users/login");
-                            }).catch(err => {
-                                console.log(err);
-                            });
+                            }).catch(err => console.log(err.stack)); // eslint-disable-line
                         });
                     });
                 }
@@ -87,8 +80,3 @@ router.get("/logout", (req, res) => {
 });
 
 module.exports = router;
-
-function randomString() {
-    const rand = (Math.random() * 100).toString(36).substr(1).replace(".", "").replace(",", "");
-    return `ToDoListApi${rand}${Math.floor(Math.sqrt(129112189091890) * Math.random() + 1000 * 2)}${rand}`; //eslint-disable-line
-}

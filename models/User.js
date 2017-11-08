@@ -21,9 +21,13 @@ const UserSchema = new Schema({
     },
     token: {
         type: String,
-        required: true
+        default: randomString()
     }
 });
 
+function randomString() {
+    const rand = (Math.random() * 100).toString(36).substr(1).replace(/./, "").replace(/,/, "");
+    return `ToDoListApi${rand}${Math.floor(Math.sqrt(129112189091890) * Math.random() + 1000 * 2)}${rand}`; //eslint-disable-line
+}
 
 mongoose.model("users", UserSchema);
