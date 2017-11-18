@@ -53,7 +53,8 @@ router.post("/register", (req, res) => {
                     const newUser = new User({
                         name: req.body.name,
                         email: req.body.email,
-                        password: req.body.password
+                        password: req.body.password,
+                        token: randomString()
                     });
 
                     bcrypt.genSalt(10, (err, salt) => {
@@ -80,3 +81,8 @@ router.get("/logout", (req, res) => {
 });
 
 module.exports = router;
+
+function randomString() {
+    const rand = (Math.random() * 100).toString(36).substr(1).replace(/./, "").replace(/,/, "");
+    return `ToDoListApi${rand}${Math.floor(Math.sqrt(129112189091890) * Math.random() + 1000 * 2)}${rand}`; //eslint-disable-line
+}
