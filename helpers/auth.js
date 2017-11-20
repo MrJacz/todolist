@@ -1,8 +1,3 @@
-module.exports = {
-    ensureAuthenticated: ensureAuth,
-    isAdmin: checkAdmin
-};
-
 const ensureAuth = (req, res, next) => {
     if (req.isAuthenticated()) return next();
     req.flash("error_msg", "Not Authorized");
@@ -17,5 +12,10 @@ const checkAdmin = (req, res, next) => {
     req.flash("error_msg", "Not Authorized");
     req.session.backURL = req.originalURL;
     return res.redirect("/");
+};
+
+module.exports = {
+    ensureAuthenticated: ensureAuth,
+    isAdmin: checkAdmin
 };
 
