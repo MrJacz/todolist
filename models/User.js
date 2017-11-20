@@ -22,6 +22,10 @@ const UserSchema = new Schema({
     token: {
         type: String,
         default: randomString()
+    },
+    admin: {
+        type: Boolean,
+        defaut: false
     }
 });
 

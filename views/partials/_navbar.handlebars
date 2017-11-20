@@ -26,6 +26,11 @@
         <li class="nav-item">
           <a href="/api" class="nav-link">Api</a>
         </li>
+        {{#if user.admin}}
+        <li class="nav-item">
+          <a href="/admin" class="nav-link">Admin</a>
+        </li>
+        {{/if}}
         <li class="nav-item">
           <a href="/users/logout" class="nav-link">Logout</a>
         </li>
