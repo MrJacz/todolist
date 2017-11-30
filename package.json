@@ -4,7 +4,7 @@
   "description": "PenguBot is a Multi-Purpose Discord Bot which is filled with features ranging from Moderation, Fun, Utilities, Music and more. It is developed in NodeJS and uses many different technologies such as MySQL, MariaDB, Linux, etc. It combines of over 100 features and is expanding at a rapid rate with over 3,000 guilds and 70,000+ users at the time of this being written.",
   "main": "src/app.js",
   "scripts": {
-    "test": "node src/app.js",
+    "test": "eslint ./",
     "dev": "nodemon src/app.js",
     "prod": "pm2 start start.js --name pengu"
   },
