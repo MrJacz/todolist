@@ -1,29 +1,27 @@
 {
-  "name": "pengubot-rewrite",
+  "name": "todo-list",
   "version": "1.0.0",
-  "description": "PenguBot is a Multi-Purpose Discord Bot which is filled with features ranging from Moderation, Fun, Utilities, Music and more. It is developed in NodeJS and uses many different technologies such as MySQL, MariaDB, Linux, etc. It combines of over 100 features and is expanding at a rapid rate with over 3,000 guilds and 70,000+ users at the time of this being written.",
-  "main": "src/app.js",
+  "description": "App to create video ideas",
+  "main": "app.js",
   "scripts": {
-    "test": "eslint ./",
-    "dev": "nodemon src/app.js",
-    "prod": "pm2 start start.js --name pengu"
+    "start": "node app.js"
   },
-  "keywords": [
-    "Discord",
-    "bot"
-  ],
-  "author": "AdityaTD & Jacz",
+  "author": "Jacz",
   "license": "MIT",
   "dependencies": {
-    "canvas": "github:Automattic/node-canvas",
-    "canvas-constructor": "github:kyranet/canvasConstructor#2.0",
-    "cheerio": "^1.0.0-rc.2",
-    "discord.js": "github:hydrabolt/discord.js",
-    "klasa": "github:dirigeants/klasa",
-    "moment-duration-format": "^1.3.0"
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.1",
+    "connect-flash": "^0.1.1",
+    "express": "^4.15.4",
+    "express-handlebars": "^3.0.0",
+    "express-session": "^1.15.5",
+    "method-override": "^2.3.9",
+    "mongoose": "^4.11.12",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0"
   },
   "devDependencies": {
-    "eslint": "^4.10.0"
-  },
-  "private": true
+    "eslint": "^4.12.1",
+    "nodemon": "^1.12.5"
+  }
 }
